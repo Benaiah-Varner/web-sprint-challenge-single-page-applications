@@ -1,14 +1,26 @@
-import React, {useState, useEffect} from "react";
-import {Route, Link, Switch} from 'react-router-dom';
-import Pizza from './pizza'
+import React, {useState} from "react";
+import {Route, Link} from 'react-router-dom';
+import Pizza from './Pizza'
 
-const Home = (props) => {
-    const {data, setData} = props
+const data = {
+    name: '',
+    pizzaSize: '',
+    pepperoni: false,
+    pineapple: false,
+    sausage: false,
+    peppers: false,
+    specialInstructions: '',
+  
+    
+  }
+
+const Home = () => {
+    const [formData, setFormData] = useState(data)
     return (
         <div>
-            <button><Link to="/pizza">Order Now!</Link></button> 
-            <Route path='/pizza'>
-                <Pizza />
+            <button><Link to="/Pizza">Order Now!</Link></button> 
+            <Route path='/Pizza'>
+                <Pizza data={formData} setData={setFormData}/>
           </Route>
         </div>
     )
